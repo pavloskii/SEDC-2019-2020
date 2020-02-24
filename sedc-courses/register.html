@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card center">
+        <img src="images/logo.png" alt="Logo of SEDC" />
+        <form onsubmit="registerUser(event)" novalidate>
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
+          <button type="submit">Register</button>
+
+          <p class="error text-center"></p>
+          <hr />
+
+          <p class="text-center">
+            Already have an account?<a href="login.html"> Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/register.js"></script>
+  </body>
+</html>
