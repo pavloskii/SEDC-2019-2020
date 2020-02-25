@@ -4,8 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
   </head>
   <body>
-    <h1>HOME PAGE</h1>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="images/home-logo.png"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+          />
+          SEDC Courses
+        </a>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-6">
+          <label class="btn btn-light">
+            <input name="direction" type="radio" checked />ASCENDING
+          </label>
+          <label class="btn btn-light">
+            <input name="direction" type="radio" />DESCENDING
+          </label>
+          <select class="form-control" style="max-width: 270px;">
+            <option>Name</option>
+            <option>Description</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <form class="form-inline float-right">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+            />
+            <button class="btn btn-light my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container card-columns mt-3" id="courses"></div>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
