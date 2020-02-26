@@ -1,6 +1,7 @@
-function registerUser(e) {
-  e.preventDefault();
-  var form = e.target;
+function login(event) {
+  event.preventDefault();
+
+  var form = event.target;
   var email = form.email.value;
   var password = form.password.value;
 
@@ -17,7 +18,7 @@ function registerUser(e) {
   };
 
   var url =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCw-lZIhvFfrU2Y2GBbZr2kXO1BmVstvHM";
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCw-lZIhvFfrU2Y2GBbZr2kXO1BmVstvHM";
 
   fetch(url, {
     method: "POST",
@@ -33,9 +34,11 @@ function registerUser(e) {
         ).innerText = data.error.message.replace(/_/g, " ");
         return;
       }
-      console.log("OVA E THEN");
-      console.log(data);
-      location.assign("../login.html");
+
+      const now = new Date();
+      const expirationDate = new Date(now.getTime() + data.expiresIn * 1000);
+      localStorage.setItem("token", data.idToken);
+      location.replace("/index.html");
     })
     .catch(function(error) {
       console.log("OVA E CATCH");

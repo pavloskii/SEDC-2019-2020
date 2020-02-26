@@ -4,8 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/register.css" />
   </head>
   <body>
-    <h1>LOGIN PAGE</h1>
+    <div class="container">
+      <div class="card center">
+        <img src="images/logo.png" alt="Logo of SEDC" />
+        <form onsubmit="login(event)" novalidate>
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
+          <button type="submit">Login</button>
+
+          <p class="error text-center"></p>
+          <hr />
+
+          <p class="text-center">
+            Do not have an account?<a href="register.html"> Register</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/login.js"></script>
   </body>
 </html>
