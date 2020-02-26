@@ -1,4 +1,4 @@
-function registerUser(e) {
+function login(e) {
   e.preventDefault();
   var form = e.target;
   var email = form.email.value;
@@ -9,19 +9,18 @@ function registerUser(e) {
   if (!isValid) {
     return;
   }
+  var url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCw-lZIhvFfrU2Y2GBbZr2kXO1BmVstvHM";
 
-  var userInfo = {
+  var loginInfo = {
     email: email,
     password: password,
     returnSecureToken: true
   };
 
-  var url =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCw-lZIhvFfrU2Y2GBbZr2kXO1BmVstvHM";
-
   fetch(url, {
     method: "POST",
-    body: JSON.stringify(userInfo)
+    body: JSON.stringify(loginInfo)
   })
     .then(function(response) {
       return response.json();
@@ -33,13 +32,10 @@ function registerUser(e) {
         return;
       }
 
-      location.assign("../login.html");
+      console.log(data);
+      location.replace("index.html");
     })
     .catch(function(error) {
-      if (error == "TypeError: Failed to fetch") {
-        errorParagraph.innerText = "No internet connection";
-      } else {
-        errorParagraph.innerText = "Some critical error!";
-      }
+      console.log(error);
     });
 }

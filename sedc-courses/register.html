@@ -8,12 +8,13 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/register.css" />
+    <link rel="stylesheet" href="css/login-register.css" />
   </head>
   <body>
     <div class="container">
       <div class="card center">
         <img src="images/logo.png" alt="Logo of SEDC" />
+        <h1 class="text-purple">Register</h1>
         <form onsubmit="registerUser(event)" novalidate>
           <input type="email" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
@@ -29,6 +30,7 @@
       </div>
     </div>
 
+    <script src="js/formValidation.js"></script>
     <script src="js/register.js"></script>
   </body>
 </html>

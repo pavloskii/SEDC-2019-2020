@@ -1,4 +1,8 @@
 /* Base */
+.text-purple {
+  color: #6969b3;
+}
+
 .text-center {
   text-align: center;
 }
