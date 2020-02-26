@@ -3,10 +3,10 @@ function registerUser(e) {
   var form = e.target;
   var email = form.email.value;
   var password = form.password.value;
+  var errorParagraph = document.querySelector("p.error");
 
   if (email == "" || password == "") {
-    document.querySelector("p.error").innerText =
-      "Please fill in all the inputs";
+    errorParagraph.innerText = "Please fill in all the inputs";
     return;
   }
 
@@ -27,12 +27,19 @@ function registerUser(e) {
       return response.json();
     })
     .then(function(data) {
-      console.log("OVA E THEN");
-      console.log(data);
+      if (data.error !== undefined) {
+        var errorMessage = data.error.message.replace(/_/g, " ").toLowerCase();
+        errorParagraph.innerText = errorMessage;
+        return;
+      }
+
       location.assign("../login.html");
     })
     .catch(function(error) {
-      console.log("OVA E CATCH");
-      console.log(error);
+      if (error == "TypeError: Failed to fetch") {
+        errorParagraph.innerText = "No internet connection";
+      } else {
+        errorParagraph.innerText = "Some critical error!";
+      }
     });
 }
