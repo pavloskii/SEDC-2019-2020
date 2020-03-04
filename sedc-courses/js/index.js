@@ -3,7 +3,7 @@ document.getElementById("nav-email").innerText = email;
 
 //Fills in the container with courses
 var allCourses;
-var token = localStorage.getItem("token");
+var token = localStorage.getItem("token"); //ova bese pod getAllCourses i bese undefined
 getAllCourses();
 
 function getAllCourses() {
