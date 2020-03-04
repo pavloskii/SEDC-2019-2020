@@ -32,6 +32,9 @@ function login(e) {
         return;
       }
 
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("token", data.idToken);
+
       console.log(data);
       location.replace("index.html");
     })

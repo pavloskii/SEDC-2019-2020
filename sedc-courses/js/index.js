@@ -1,13 +1,21 @@
-var allCourses;
+//Sets the logged in user in the navigation
+document.getElementById("nav-email").innerText = email;
 
+//Fills in the container with courses
+var allCourses;
+var token = localStorage.getItem("token");
 getAllCourses();
 
 function getAllCourses() {
-  fetch("https://sedcohrid.firebaseio.com/courses.json")
+  fetch("https://sedcohrid.firebaseio.com/courses.json?auth=" + token)
     .then(function(res) {
       return res.json();
     })
     .then(function(data) {
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
       allCourses = Object.keys(data).map(function(key) {
         var newElement = {
           id: key,
@@ -17,10 +25,8 @@ function getAllCourses() {
           image: data[key].image,
           name: data[key].name
         };
-
         return newElement;
       });
-
       drawCoursesInHTML(allCourses);
     })
     .catch(function(error) {
@@ -40,6 +46,10 @@ function drawCoursesInHTML(arrayOfCourses) {
 
     document.getElementById("courses").append(card);
   });
+}
 
-  // document.body.innerHTML = "<div></div>";
+function logout(event) {
+  // event.preventDefault();
+  localStorage.removeItem("email");
+  // location.replace("../login.html");
 }

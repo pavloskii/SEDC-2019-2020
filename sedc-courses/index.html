@@ -31,10 +31,28 @@
       <a class="navbar-brand" href="mentors.html">
         Mentors
       </a>
+      <a class="navbar-brand">
+        <span id="nav-email">email@example.com</span>
+        <img
+          src="./images/profile-image.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="SEDC logo"
+        />
+      </a>
+      <a
+        class="navbar-brand btn btn-danger text-white"
+        href="login.html"
+        onclick="logout()"
+      >
+        Logout
+      </a>
     </nav>
 
     <div class="container card-columns mt-3" id="courses"></div>
 
+    <script src="js/userAuthentication.js"></script>
     <script src="js/createCardElement.js"></script>
     <script src="js/index.js"></script>
   </body>
