@@ -40,4 +40,6 @@ function drawCoursesInHTML(arrayOfCourses) {
 
     document.getElementById("courses").append(card);
   });
+
+  // document.body.innerHTML = "<div></div>";
 }
