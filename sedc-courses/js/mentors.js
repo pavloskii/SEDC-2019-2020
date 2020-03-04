@@ -16,8 +16,43 @@
 //6. So podatocite koi ke gi vrati serverot (povekje informacii ima samo za userot so id igorp) treba
 //   da napravite nekoja opis, po vas izbor ostavam. (kako primer moze da ja zemite slikata so vi ja isprativ)
 
-var mentors;
+var allMentors;
+getAllMentors();
 
-function getAllMentors() {}
+function getAllMentors() {
+  fetch("https://sedcohrid.firebaseio.com/mentors.json")
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+      allMentors = Object.keys(data).map(function(key) {
+        var newElement = {
+          id: key,
+          name: data[key].name,
+          description: data[key].description,
+          image: data[key].image
+        };
 
-function drawMentorsInHTML(arrayOfMentors) {}
+        return newElement;
+      });
+
+      drawMentorsInHTML(allMentors);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+function drawMentorsInHTML(arrayOfMentors) {
+  arrayOfMentors.forEach(function(mentor) {
+    var card = createCardElement(
+      mentor.image,
+      "SEDC Mentor",
+      mentor.name,
+      mentor.description,
+      "../mentor.html?id=" + mentor.id
+    );
+
+    document.getElementById("mentors").append(card);
+  });
+}

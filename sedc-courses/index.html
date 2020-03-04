@@ -10,11 +10,32 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <div class="container card-columns" id="courses"></div>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="./images/sedc.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="SEDC logo"
+        />
+        SEDC
+      </a>
+      <a class="navbar-brand" href="mentors.html">
+        Mentors
+      </a>
+    </nav>
 
+    <div class="container card-columns mt-3" id="courses"></div>
+
+    <script src="js/createCardElement.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
