@@ -30,6 +30,9 @@ function getAllCourses() {
 }
 
 function drawCoursesInHTML(arrayOfCourses) {
+  var container = document.getElementById("courses");
+  container.innerHTML = "";
+
   arrayOfCourses.forEach(course => {
     var card = createCardElement(
       course.image,
@@ -39,7 +42,7 @@ function drawCoursesInHTML(arrayOfCourses) {
       "../course.html?id=" + course.id
     );
 
-    document.getElementById("courses").append(card);
+    container.append(card);
   });
 }
 
@@ -47,4 +50,25 @@ function logout(event) {
   // event.preventDefault();
   localStorage.removeItem("email");
   // location.replace("../login.html");
+}
+
+function sortBy(property, direction) {
+  allCourses.sort((a, b) => {
+    if (a[property].toLowerCase() < b[property].toLowerCase()) {
+      return direction == "asc" ? -1 : 1;
+    }
+
+    if (a[property].toLowerCase() > b[property].toLowerCase()) {
+      return direction == "asc" ? 1 : -1;
+    }
+
+    return 0;
+  });
+
+  drawCoursesInHTML(allCourses);
+}
+
+function sortByDirection(direction) {
+  document.getElementById;
+  sortBy();
 }
