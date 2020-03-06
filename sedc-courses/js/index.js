@@ -3,12 +3,11 @@ document.getElementById("nav-email").innerText = email;
 
 //Fills in the container with courses
 var allCourses;
-var token = localStorage.getItem("token"); //ova bese pod getAllCourses i bese undefined
 getAllCourses();
 
 function getAllCourses() {
   fetch("https://sedcohrid.firebaseio.com/courses.json?auth=" + token)
-    .then(function(res) {
+    .then(res => {
       return res.json();
     })
     .then(function(data) {
@@ -16,26 +15,22 @@ function getAllCourses() {
         alert(data.error);
         return;
       }
-      allCourses = Object.keys(data).map(function(key) {
+      allCourses = Object.keys(data).map(key => {
         var newElement = {
           id: key,
-          assistant: data[key].assistant,
-          mentor: data[key].mentor,
-          description: data[key].description,
-          image: data[key].image,
-          name: data[key].name
+          ...data[key]
         };
         return newElement;
       });
       drawCoursesInHTML(allCourses);
     })
-    .catch(function(error) {
+    .catch(error => {
       console.log(error);
     });
 }
 
 function drawCoursesInHTML(arrayOfCourses) {
-  arrayOfCourses.forEach(function(course) {
+  arrayOfCourses.forEach(course => {
     var card = createCardElement(
       course.image,
       "SEDC Course",

@@ -34,6 +34,10 @@ function login(e) {
 
       localStorage.setItem("email", data.email);
       localStorage.setItem("token", data.idToken);
+      localStorage.setItem(
+        "expiresIn",
+        new Date().getTime() + Number(data.expiresIn) * 1000
+      );
 
       console.log(data);
       location.replace("index.html");
